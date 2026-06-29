@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
+const fs = require("fs");
 
 const commands = require("./registry/commands");
 const commandConfig = require("./registry/commandConfig");
@@ -10,6 +11,13 @@ const handlePendingAction = require("./utils/pendingActionHandler");
 const injectActivePage = require("./utils/activePageInjector");
 const validate = require("./utils/validator");
 const getConversationReply = require("./utils/conversation");
+
+// Create generated folder automatically if it doesn't exist
+const generatedDir = path.join(__dirname, "generated");
+
+if (!fs.existsSync(generatedDir)) {
+    fs.mkdirSync(generatedDir, { recursive: true });
+}
 
 const app = express();
 const PORT = 3000;
