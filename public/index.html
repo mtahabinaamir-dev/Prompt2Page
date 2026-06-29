@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prompt2Page AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <div class="container">
+
+        <div class="header">
+
+            <div class="logo-area">
+
+                <h1>🤖 Prompt2Page AI</h1>
+
+                <p class="tagline">
+                    From Prompt to Page.
+                </p>
+
+            </div>
+
+            <div class="status-bar">
+
+                <div class="status-item">
+
+                    📄 Active Page
+
+                    <span id="activePage">None</span>
+
+                </div>
+
+                <button
+                    id="previewBtn"
+                    class="preview-btn"
+                >
+
+                    👁️ Show Live Preview
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <div
+            class="chat-box"
+            id="chatBox"
+        >
+
+            <div class="message bot">
+
+                <div class="message-text">
+
+                    👋 Welcome to <strong>Prompt2Page AI</strong>!
+
+                    <br><br>
+
+                    Describe the website you'd like to build or type <strong>help</strong> to explore available commands.
+
+                </div>
+
+                <div class="message-time">
+
+                    Just now
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="quick-actions">
+
+            <button
+                class="quick-btn"
+                data-command="create page named home"
+            >
+                🏠 Create Home
+            </button>
+
+            <button
+                class="quick-btn"
+                data-command="add heading Welcome to my website"
+            >
+                📝 Add Heading
+            </button>
+
+            <button
+                class="quick-btn"
+                data-command="switch to home"
+            >
+                🔄 Switch Page
+            </button>
+
+            <button
+                class="quick-btn"
+                data-command="help"
+            >
+                ❓ Help
+            </button>
+
+        </div>
+
+        <div class="input-area">
+
+            <input
+                type="text"
+                id="commandInput"
+                placeholder="Describe what you'd like to build..."
+            >
+
+            <button id="sendBtn">
+
+                ➜
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="preview-panel">
+
+        <div class="preview-header">
+
+            🌐 Live Website Preview
+
+        </div>
+
+        <iframe
+            id="previewFrame"
+            src=""
+        ></iframe>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+function defaultPage(pageName) {
+
+    return `<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${pageName}</title>
+</head>
+
+<body>
+
+    <main id="content">
+
+    </main>
+
+</body>
+
+</html>`;
+
+}
+
+module.exports = defaultPage;
