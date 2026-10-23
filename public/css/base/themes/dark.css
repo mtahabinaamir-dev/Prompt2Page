@@ -1,0 +1,31 @@
+:root{
+
+--color-background:#15171C;
+--color-surface:#1D2129;
+--color-surface-secondary:#262B35;
+
+--color-border:#303643;
+--color-border-hover:#495261;
+
+--color-text-primary:#FFFFFF;
+--color-text-secondary:#D5D9E2;
+--color-text-muted:#9CA3AF;
+--color-text-light:#6B7280;
+--color-text-inverse:#FFFFFF;
+
+--color-selection:#64748B;
+--color-accent:#1E293B;
+--color-accent-hover:#334155;
+
+--color-success:#22C55E;
+--color-danger:#F87171;
+--color-danger-hover:#EF4444;
+
+--transition-fast:.2s ease;
+--transition-normal:.3s ease;
+
+--shadow-sm:0 2px 8px rgba(0,0,0,.22);
+--shadow-md:0 10px 24px rgba(0,0,0,.34);
+--shadow-lg:0 16px 36px rgba(0,0,0,.48);
+
+}

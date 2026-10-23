@@ -1,0 +1,28 @@
+{
+  "name": "project-2026",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint application/ domain/ bootstrap/ commands/ server.js",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "archiver": "^7.0.1",
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^10.13.0",
+    "globals": "^17.13.0",
+    "nodemon": "^3.1.14",
+    "prettier": "^3.9.10",
+    "vitest": "^5.0.5"
+  }
+}

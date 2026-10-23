@@ -1,0 +1,249 @@
+/* =====================================================
+   Mobile app shell (<=900px) — a purpose-built phone
+   layout, not the desktop UI squeezed down: a bottom
+   tab bar (Build / Preview / Sites / More), one screen
+   per job, the chat input pinned in the Build screen.
+   Desktop (>900px) never sees any of this.
+===================================================== */
+
+.mobile-tabbar {
+    display: none;
+}
+
+.preview-chip {
+    display: none;
+}
+
+@media (max-width: 900px) {
+
+    /* ---- Page skeleton: header / content / tab bar in one flex
+       column, so the content fills the screen exactly — no dead
+       space above the tab bar, whatever the header height is ---- */
+
+    body {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        height: 100dvh;
+        overflow: hidden;
+    }
+
+    .app {
+        flex: 1;
+        min-height: 0;
+        display: flex;
+    }
+
+    .main {
+        flex: 1;
+        min-height: 0;
+        min-width: 0;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        padding: 8px;
+    }
+
+    /* ---- Tab bar (in flow at the bottom of the column) ---- */
+
+    .mobile-tabbar {
+        display: flex;
+        position: static;
+        flex: 0 0 auto;
+        background: var(--color-surface, #fff);
+        border-top: 1px solid var(--color-border, #e2e8f0);
+        padding: 6px 4px calc(6px + env(safe-area-inset-bottom, 0px));
+        z-index: 950;
+    }
+
+    .mtab {
+        flex: 1;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        padding: 6px 0 4px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 10px;
+        font-weight: 600;
+        color: var(--color-text-muted, #718096);
+    }
+
+    .mtab-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .mtab.is-active {
+        color: #3182ce;
+    }
+
+    .mtab.is-active::before {
+        content: "";
+        position: absolute;
+        top: -7px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 22px;
+        height: 3px;
+        border-radius: 2px;
+        background: #3182ce;
+    }
+
+    .mtab-dot {
+        position: absolute;
+        top: 4px;
+        right: calc(50% - 17px);
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #f59e0b;
+    }
+
+    .mtab-dot[hidden] {
+        display: none;
+    }
+
+    /* ---- Shell: sidebar retires, header slims down ---- */
+
+    .sidebar {
+        display: none;
+    }
+
+    .header {
+        padding: 8px 12px;
+        min-height: 52px;
+    }
+
+    .brand-text span {
+        display: none;
+    }
+
+    #githubExportButton,
+    #netlifyExportButton,
+    #vercelExportButton,
+    #helpButton {
+        display: none;
+    }
+
+    /* ---- Dashboard: one panel per tab, filling the space between
+       header and tab bar (flex:1 in the column — no fixed heights,
+       so the chat gets every pixel the old layout wasted) ---- */
+
+    .dashboard-view {
+        flex: 1;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .dashboard-view .hero,
+    .dashboard-view .recent-pages {
+        display: none;
+    }
+
+    .dashboard-view .workspace {
+        flex: 1;
+        min-height: 0;
+        display: block;
+    }
+
+    /* Build tab: chat fills the screen, input pinned at its bottom */
+    body:not([data-mtab="preview"]) .dashboard-view .right-column {
+        display: none;
+    }
+
+    body:not([data-mtab="preview"]) .dashboard-view .command-panel {
+        height: 100%;
+    }
+
+    /* Preview tab: the site fills the screen */
+    body[data-mtab="preview"] .dashboard-view .command-panel {
+        display: none;
+    }
+
+    body[data-mtab="preview"] .dashboard-view .right-column {
+        display: block;
+        height: 100%;
+    }
+
+    body[data-mtab="preview"] .dashboard-view .preview-panel {
+        height: 100%;
+        min-height: 0;
+    }
+
+    /* "View preview" chip inside the chat (phone only) */
+    .preview-chip {
+        display: inline-flex;
+        margin: 6px 10px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        border: 1px solid #0f766e;
+        background: transparent;
+        color: #0f766e;
+        font-size: 12.5px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    /* Panel headers stay in bounds: the <=640px responsive rules stack
+       headers into a column, but the base header height stays 46px, so
+       the second row spilled outside the header box. The command header
+       fits on one row at phone widths — keep it there. The preview
+       header keeps its stacked controls but sizes to its content. */
+    .command-panel .panel-header {
+        flex-direction: row;
+        align-items: center;
+        height: 46px;
+    }
+
+    .preview-panel .panel-header {
+        height: auto;
+        min-height: 46px;
+    }
+
+    /* ---- Secondary views: single column, thumb-sized rows ---- */
+
+    .more-view {
+        flex-direction: column;
+    }
+
+    .page-grid,
+    .template-grid,
+    .theme-grid,
+    .component-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .more-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .more-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 14px 16px;
+        background: var(--color-surface, #fff);
+        border: 1px solid var(--color-border, #e2e8f0);
+        border-radius: 12px;
+        color: var(--color-text-primary, #1a202c);
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        text-align: left;
+    }
+
+    .more-item::after {
+        content: "›";
+        color: var(--color-text-muted, #718096);
+        font-size: 18px;
+        line-height: 1;
+    }
+}
